@@ -38,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                adapter.add( new Item(name.getText().toString(), Integer.valueOf(price.getText().toString())) );
-                name.setText(null);
-//                price.setText("0");
-                price.getText().clear();;
+                String new_name = name.getText().toString();
+                String new_price = price.getText().toString();
+                if( new_name.length() > 0 && new_price.length() > 0 ){
+                    adapter.add( new Item( new_name, Integer.valueOf(new_price) ) );
+                    name.setText(null);
+                    price.getText().clear();;
+                }
             }
         });
     }
